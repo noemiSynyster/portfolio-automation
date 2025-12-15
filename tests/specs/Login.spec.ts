@@ -7,4 +7,6 @@ test('should login successfully', async ({ page }) => {
 
   await loginPage.open();
   await loginPage.login(users.validUser.email, users.validUser.password);
+  await loginPage.assertLoginSuccess();
+  await loginPage.assertUserNameIsDisplayed(users.validUser.name);
 });
