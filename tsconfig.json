@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["node", "playwright"],
+    "strict": true,
+    "outDir": "dist"
+  },
+  "include": ["tests"],
+  "exclude": ["dist"]
+}
