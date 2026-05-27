@@ -1,12 +1,19 @@
+import { users } from '../test-data/users';
 import { test } from '@playwright/test';
 import { LoginPage } from '../../src/pages/LoginPage';
-import { users } from '../test-data/users';
+import { AccountPage } from '../../src/pages/AccountPage';
+import { ROUTES } from '../../src/config/routes';
 
-test('should login successfully', async ({ page }) => {
-  const loginPage = new LoginPage(page);
+test.describe('Login flow', () => {
+  test('User can login and logout successfully', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    const accountPage = new AccountPage(page);
 
-  await loginPage.open();
-  await loginPage.login(users.validUser.email, users.validUser.password);
-  await loginPage.assertLoginSuccess();
-  await loginPage.assertUserNameIsDisplayed(users.validUser.name);
+    await page.goto(ROUTES.LOGIN);
+
+    await loginPage.login(users.validUser.email, users.validUser.password);
+
+    await accountPage.assertUserIsLoggedIn(users.validUser.name);
+    await accountPage.logout();
+  });
 });
