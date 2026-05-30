@@ -9,6 +9,7 @@ export default defineConfig({
   timeout: 30_000,
   expect: { timeout: 5000 },
   fullyParallel: true,
+  forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 2 : undefined,
   reporter: [
@@ -26,8 +27,16 @@ export default defineConfig({
   },
   projects: [
     {
-      name: 'chromium',
+      name: 'Desktop Chrome',
       use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'Desktop Firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'Desktop Safari',
+      use: { ...devices['Desktop Safari'] },
     },
   ],
 });
