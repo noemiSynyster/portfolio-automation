@@ -9,7 +9,7 @@
     "test:report": "npx playwright show-report",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write .",
-    "prepare": "npm exec husky" 
+    "prepare": "npm exec husky"
   },
   "repository": {
     "type": "git",
@@ -40,5 +40,8 @@
     "*.{ts,js}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
   }
 }
